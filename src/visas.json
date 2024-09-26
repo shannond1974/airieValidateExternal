@@ -1,0 +1,15 @@
+[
+    {
+      "visa": "Visitor Visa",
+      "visaDescription": "This is a general purpose visitor visa for visiting New Zealand"
+    },
+    {
+      "visa": "Student Visa",
+      "visaDescription": "This is a visa if you wish to stay for study purposes"
+    },
+    {
+      "visa": "Resident Visa (Skilled)",
+      "visaDescription": "This is a resident visa based on skilled professions"
+    }
+  ]
+  
