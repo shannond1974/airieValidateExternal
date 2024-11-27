@@ -60,6 +60,13 @@ export class ApiService {
     return this.httpClient.post<any>(this.baseURL + 'Airie/EmailReport', emailRequest);
   }
 
+  public getPublishedReport(uniqueLink:string){
+    const options = {
+      'responseType': 'application/json'
+    }
+    let reportRequest: any = {ReportKey:uniqueLink, options };
+    return this.httpClient.post<any>(this.baseURL + 'Airie/GetPublishedReport', reportRequest);
+  }
   public getSubmittedAnswers(){
     const options = {
       'responseType': 'application/json'

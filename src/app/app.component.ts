@@ -21,7 +21,7 @@ export class AppComponent {
   public answerSet:string='';
   public answerSetId:number=0;  
   public firstName:string='';
-
+  public processedReport:string='';
   constructor(private route: ActivatedRoute,private http: HttpClient,private apiService: ApiService) {
 
   }
@@ -30,26 +30,21 @@ export class AppComponent {
     this.userName=='airie';
     
     this.route.queryParams.subscribe(params => {
+      console.log(params);
       const answerSetGet = params['AnswerSet'];
       this.answerSet=answerSetGet;
-      console.log(answerSetGet);
-      this.apiService.getSubmittedAnswers().subscribe(data => {
-        console.log(data);
-        for(var i = 0; i < data.length; i++){
-          if(this.answerSet.toLowerCase()==data[i].uniqueLink.toLowerCase()){
-            
-            this.answerSetId=data[i].answerSetId;
-            this.firstName=data[i].firstName;
-            this.userName=data[i].userName;
-            this.hasParam=true;
-            console.log('here 2'); 
-          }
-          
-        }
-        
-      })
       
-    });
+      if (this.answerSet!=''){
+        this.apiService.getPublishedReport(this.answerSet).subscribe(data => {
+          console.log(data);
+          this.processedReport=data.processedContent;
+          
+        });
+      }
+      
+      });
+      
+    
     
   }
 
